@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>visits counter</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<h1>VISITS</h1>
+	<p class="visits">initializing...</p>
+
+  <script type="module">
+  	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+  	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+  	import { getDatabase, get, set, update, ref, child } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+  	const firebaseConfig = {
+  		apiKey: "AIzaSyAZkhTZk6oKcR7eox2rNO2NuYUa2BwiEgU",
+  		authDomain: "test-database-4173b.firebaseapp.com",
+  		databaseURL: "https://test-database-4173b-default-rtdb.firebaseio.com",
+  		projectId: "test-database-4173b",
+  		storageBucket: "test-database-4173b.appspot.com",
+  		messagingSenderId: "781300222889",
+  		appId: "1:781300222889:web:23d6cf79b99618040792b8",
+  		measurementId: "G-WZ8XQRM95Y"
+  	};
+  	const app = initializeApp(firebaseConfig);
+  	const analytics = getAnalytics(app);
+  	const visitsCounter = document.querySelector('.visits');
+  	let db = getDatabase();
+  	let visits = 0;
+  	document.body.onload = () => {
+  		get(child(ref(db), "Visits/totalVisits"))
+  			.then(visit => {
+  				if (visit.exists()) {
+  					visits = visit.val();
+  					visits++
+  	
+  					update(ref(db, "Visits/"), {
+  						totalVisits: visits
+  					})
+  					visitsCounter.textContent = `visited ${visits} times!`
+  				}
+  			})
+  	}
+  </script>
+</body>
+</html>
