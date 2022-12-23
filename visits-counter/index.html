@@ -25,7 +25,8 @@
 	fetch("https://nubscript7.github.io/json-placeholder/firebase/config.json")
 	.then(res=>res.json())
 	.then(e=>e=firebaseConfig)
-	
+	console.log(firebaseConfig)
+
   	const app = initializeApp(firebaseConfig);
   	const analytics = getAnalytics(app);
   	const visitsCounter = document.querySelector('.visits');
