@@ -21,16 +21,11 @@
   	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
   	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
   	import { getDatabase, get, set, update, ref, child } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-  	const firebaseConfig = {
-  		apiKey: "AIzaSyAZkhTZk6oKcR7eox2rNO2NuYUa2BwiEgU",
-  		authDomain: "test-database-4173b.firebaseapp.com",
-  		databaseURL: "https://test-database-4173b-default-rtdb.firebaseio.com",
-  		projectId: "test-database-4173b",
-  		storageBucket: "test-database-4173b.appspot.com",
-  		messagingSenderId: "781300222889",
-  		appId: "1:781300222889:web:23d6cf79b99618040792b8",
-  		measurementId: "G-WZ8XQRM95Y"
-  	};
+  	let firebaseConfig;
+	fetch("https://nubscript7.github.io/json-placeholder/firebase/config.json")
+	.then(res=>res.json())
+	.then(e=>e=firebaseConfig)
+	
   	const app = initializeApp(firebaseConfig);
   	const analytics = getAnalytics(app);
   	const visitsCounter = document.querySelector('.visits');
