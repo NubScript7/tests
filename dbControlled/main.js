@@ -13,7 +13,7 @@ const db = getDatabase();
 setInterval(()=>{
 get(child(ref(db),"dbCon/htmlContent/value"))
 .then(msg=>{
-  if(mssg=="stop*")return;
+  if(mssg=="stop*"){mssg="-"};
   let conf = /\$!/
   if(conf.test(msg.val())){
   mssg = `${msg.val()}`.slice(2,`${msg.val()}`.length)
