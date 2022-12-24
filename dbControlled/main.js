@@ -13,12 +13,12 @@ const db = getDatabase();
 setInterval(()=>{
 get(child(ref(db),"dbCon/htmlContent/value"))
 .then(msg=>{
-  if(mssg==false)return;
+  if(mssg=="stop*")return;
   let conf = /\$!/
   if(conf.test(msg.val())){
   mssg = `${msg.val()}`.slice(2,`${msg.val()}`.length)
   alert(mssg)
-  mssg = false
+  mssg = "stop*"
   }else{
   txt.innerHTML = msg.val()
   }
