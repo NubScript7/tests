@@ -16,7 +16,7 @@ get(child(ref(db),"dbCon/htmlContent/value"))
   if(conf.test(msg.val())){
   let mssg = `${msg.val()}`.slice(2,`${msg.val()}`.length)
   alert(mssg)
-  msg.val() = ...
+  msg.val() = "..."
   }else{
   txt.innerHTML = msg.val()
   }
