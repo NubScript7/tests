@@ -3,6 +3,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase
 import { getDatabase,get,child,ref } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 const txt = document.querySelector('.comm');
 let firebaseConfig;
+let mssg = ""
 await fetch("https://nubscript7.github.io/json-placeholder/firebase/config.json")
 .then(res=>res.json())
 .then(json=>firebaseConfig=json)
@@ -12,11 +13,12 @@ const db = getDatabase();
 setInterval(()=>{
 get(child(ref(db),"dbCon/htmlContent/value"))
 .then(msg=>{
+  if(mssg==false)return;
   let conf = /\$!/
   if(conf.test(msg.val())){
-  let mssg = `${msg.val()}`.slice(2,`${msg.val()}`.length)
+  mssg = `${msg.val()}`.slice(2,`${msg.val()}`.length)
   alert(mssg)
-  mssg = "..."
+  mssg = false
   }else{
   txt.innerHTML = msg.val()
   }
