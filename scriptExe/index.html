@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test Script Executor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<textarea cols="30" rows="10" class="usrScript"></textarea>
+	<button class="adScript">test</button>
+  <script>
+  const userScrpt = document.querySelector('.usrScript')
+  	document.querySelector('.adScript')
+  	.addEventListener('click',()=>{
+  		const testEl = document.createElement('script');
+  		testEl.textContent = userScrpt.value
+  		document.body.appendChild(testEl)
+  	})
+  </script>
+</body>
+</html>
