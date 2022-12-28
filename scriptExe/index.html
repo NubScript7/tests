@@ -15,7 +15,12 @@
   	document.querySelector('.adScript')
   	.addEventListener('click',()=>{
   		const testEl = document.createElement('script');
+  		if(`${userScrpt.value}`.endsWith('.js')){
+  			let str = `${userScrpt.value}`;
+  			testEl.src = str.slice(2,str.length)
+  		}else{
   		testEl.textContent = userScrpt.value
+  		}
   		document.body.appendChild(testEl)
   	})
   </script>
